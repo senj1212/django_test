@@ -7,19 +7,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'employees/css/main.css' %}">
     <title>{{ title }}</title>
 </head>
-<header></header>
-<main>
-    <div class="container-xxl"></div>
-</main>
-<footer></footer>
 
-<body>
+<body class="bg-dark">
+    <header>
+        <div class="container-xxl mt-4">
+            <h1 class="text-uppercase fs-1 fw-semibold font-monospace text-light text-center">
+                Test query django
+            </h1>
+            <h3 class="text-uppercase fs-4 font-monospace text-light text-center m-0 mt-3">
+                Made in 2024 as a test case by G.S.
+            </h3>
+        </div>
+    </header>
+    <main>
+        <div class="container-xxl my-5">
+            <div class="accordion">
+                {% for employee in employees %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header employee" data-pk="{{ employee.pk }}">
+                        <button onclick="hide_sibling(this)" class="accordion-button collapsed d-flex gap-4"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                            aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                            <span class="fs-5 fw-medium">Name: {{ employee.full_name }} </span>
+                            <span class="fs-5 fw-medium">Position : {{ employee.position }}</span>
+                            <span class="fs-5 fw-medium">Acceptance date : {{employee.position }}</span>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
     <script type="text/javascript" src="{% static 'employees/js/jquery.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'employees/js/main.js' %}"></script>
 </body>
 
 </html>

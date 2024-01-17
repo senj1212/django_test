@@ -4,5 +4,6 @@ from .views import *
 
 
 urlpatterns = [
-    path('', index),
+    path('', IndexPage.as_view()),
+    path('get_employees_by_manager_id', get_employees_by_manager_id)
 ]
